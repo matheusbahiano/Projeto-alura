@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vídeo Principal com Mini Visor e Texto</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to right, #000000, #521005); /* Degradê vermelho horizontal */
+            color: white;
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start; /* Ajuste para permitir rolagem */
+            height: auto; /* Permitir altura automática */
+            min-height: 100vh; /* Garantir altura mínima da viewport */
+            overflow-y: auto; /* Adicionar rolagem vertical */
+        }
+        .text-box {
+            background: rgba(0, 0, 0, 0.8); /* Fundo semi-transparente */
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            text-align: center;
+            max-width: 80%;
+            width: 100%;
+        }
+        .text-box h1 {
+            margin: 0;
+            font-size: 2.5rem; /* Tamanho grande do texto */
+        }
+        .video-container {
+            width: 70%; /* Diminuído de 80% para 70% */
+            max-width: 640px; /* Diminuído de 800px para 640px */
+            margin-bottom: 20px;
+            background: black;
+            padding: 10px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.7);
+        }
+        .video-container iframe {
+            width: 100%;
+            height: 360px; /* Diminuído de 450px para 360px */
+            border: none;
+        }
+        .mini-visor {
+            width: 70%; /* Diminuído de 80% para 70% */
+            max-width: 640px; /* Diminuído de 800px para 640px */
+            display: flex;
+            overflow-x: auto;
+            white-space: nowrap;
+            gap: 10px;
+            padding: 10px 0; /* Espaçamento acima e abaixo do visor */
+        }
+        .mini-visor::-webkit-scrollbar {
+            height: 8px; /* Altura da barra de rolagem horizontal */
+        }
+        .mini-visor::-webkit-scrollbar-thumb {
+            background-color: #555; /* Cor da barra de rolagem */
+            border-radius: 4px;
+        }
+        .mini-visor::-webkit-scrollbar-track {
+            background: #333; /* Cor do trilho da barra de rolagem */
+        }
+        .mini-visor img {
+            width: 120px;
+            height: 90px;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: opacity 0.3s;
+        }
+        .mini-visor img:hover {
+            opacity: 0.7;
+        }
+        footer {
+            background: rgba(0, 0, 0, 0.8); /* Fundo semi-transparente */
+            color: white;
+            padding: 10px;
+            border-radius: 10px;
+            text-align: center;
+            margin-top: 20px;
+            width: 100%;
+            position: relative;
+            bottom: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="text-box">
+        <h1>Bem-vindo ao Meu Site de Vídeos</h1>
+    </div>
+    <div class="video-container">
+        <iframe id="main-video" src="https://www.youtube.com/embed/Uk08PZBLU1g" title="Homem-Aranha no Aranhaverso: Um Salto de Fé (Cena do Filme) | Com Legendas" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+    </div>
+    <div class="mini-visor">
+        <!-- Trailers atualizados de filmes da Marvel -->
+        <img src="https://img.youtube.com/vi/TcMBFSGVi1c/0.jpg" alt="Vingadores: Guerra Infinita" data-video="TcMBFSGVi1c">
+        <img src="https://img.youtube.com/vi/xjDjIWPwcPU/0.jpg" alt="Pantera Negra" data-video="xjDjIWPwcPU">
+        <img src="https://img.youtube.com/vi/1s9w1ljnS90/0.jpg" alt="Homem-Formiga e a Vespa" data-video="1s9w1ljnS90">
+        <img src="https://img.youtube.com/vi/4MCU4WlV62I/0.jpg" alt="Doutor Estranho no Multiverso da Loucura" data-video="4MCU4WlV62I">
+    </div>
+
+    <footer>
+        <p>© 2024 Matheus bahia. copia nao filha da p***😡!</p>
+    </footer>
+
+    <script>
+        function changeVideo(videoId) {
+            const iframe = document.getElementById('main-video');
+            iframe.src = `https://www.youtube.com/embed/${videoId}`;
+        }
+
+        document.querySelectorAll('.mini-visor img').forEach(img => {
+            img.addEventListener('click', () => {
+                const videoId = img.getAttribute('data-video');
+                changeVideo(videoId);
+            });
+        });
+    </script>
+</body>
+</html>
